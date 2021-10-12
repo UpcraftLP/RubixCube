@@ -4,3 +4,6 @@
 RubixCube/x64/
 
 *.exe
+
+*.vcxproj.user
+*.vcxproj.filters
