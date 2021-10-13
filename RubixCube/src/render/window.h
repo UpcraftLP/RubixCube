@@ -14,7 +14,7 @@
 using namespace Rubix;
 
 namespace Rubix::Util {
-    void framebufferCallback(GLFWwindow *windowHandle, int width, int height);
+    void _framebufferCallback(GLFWwindow *windowHandle, int width, int height);
 }
 
 namespace Rubix::Render {
@@ -73,7 +73,7 @@ namespace Rubix::Render {
 #if RUBIX_VSYNC
             glfwSwapInterval(1); // vsync
 #endif
-            glfwSetFramebufferSizeCallback(hWND, Util::framebufferCallback);
+            glfwSetFramebufferSizeCallback(hWND, Util::_framebufferCallback);
             glfwGetFramebufferSize(hWND, &framebufferWidth, &framebufferHeight);
             onResize(framebufferWidth, framebufferHeight);
         }
@@ -94,7 +94,7 @@ namespace Rubix::Render {
             return !glfwWindowShouldClose(hWND);
         }
 
-        void clear() {
+        void beginFrame() {
             if(resized) {
                 // TODO handle anything that needs to be resized
                 resized = false;
@@ -102,7 +102,7 @@ namespace Rubix::Render {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         }
 
-        void swapBuffers() {
+        void endFrame() {
             glfwSwapBuffers(hWND);
             glfwPollEvents();
         }

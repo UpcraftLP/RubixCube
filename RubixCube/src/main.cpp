@@ -38,7 +38,7 @@ int main() {
     return 0;
 #endif
 
-    glfwSetErrorCallback(Util::error_callback);
+    glfwSetErrorCallback(Util::_errorCallback);
     Application main;
 #if RUBIX_BG_WINDOW
     BackgroundWnd::setBackgroundWindow(main.window->handle());

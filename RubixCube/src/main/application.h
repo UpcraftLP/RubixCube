@@ -50,9 +50,9 @@ namespace Rubix {
             while (window->alive()) {
                 double currentTime = glfwGetTime();
                 double delta = currentTime - lastTime;
-                window->clear();
+                window->beginFrame();
                 render(delta);
-                window->swapBuffers();
+                window->endFrame();
                 lastTime = currentTime;
             }
         }
